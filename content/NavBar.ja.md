@@ -1,4 +1,4 @@
 ---
-brand: "Start Bootstrap"
+brand: "Yaswanth Palika"
 menuText: "メニュー "
 ---

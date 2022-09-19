@@ -34,57 +34,72 @@ export const query = graphql`
         frontmatter {
           brand
           anchor
-          clients {
-            href
-            imageFileName
-          }
           content
           copyright
           header
-          email
-          imageFileName
           jumpToAnchor
           jumpToAnchorText
           menuText
-          portfolios {
-            content
-            extraInfo
-            header
-            subheader
-            imageFileNameDetail
-            imageFileName
+          projects {
+            visai {
+              imageFileName
+              imageFileNameDetail
+              header
+              subheader
+              content
+              date
+              links {
+                name
+                url
+              }
+            }
+            aandw {
+              imageFileName
+              imageFileNameDetail
+              header
+              subheader
+              content
+              date
+              links {
+                name
+                url
+              }
+            }
+            software {
+              imageFileName
+              imageFileNameDetail
+              header
+              subheader
+              content
+              date
+              links {
+                name
+                url
+              }
+            }
           }
-          privacyHref
-          privacyText
-          services {
-            content
-            header
-            iconName
-            imageFileName
-          }
-          social {
-            facebook
-            github
-            linkedin
-            medium
-            twitter
+          education {
+            school
+            degree
+            score
+            highlights
           }
           subheader
-          teamMember {
-            header
-            imageFileName
+          me {
+            content
             social {
-              facebook
+              scholar
               github
               linkedin
               medium
               twitter
             }
-            subheader
           }
-          telephone
-          termsHref
-          termsText
+          skills {
+            languages
+            platforms
+            landf
+          }
           title
           timeline {
             content
@@ -100,6 +115,13 @@ export const query = graphql`
         }
       }
     }
+    allFile(filter: { extension: { eq: "pdf" } }) {
+      edges {
+        node {
+          publicURL
+        }
+      }
+    }
   }
 `;
 
@@ -109,6 +131,7 @@ const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } })
       siteMetadata: { keywords, description },
     },
     allMarkdownRemark: { nodes },
+    allFile: { edges },
   } = data;
 
   const { topNode, navBarNode, anchors, footerNode, sectionsNodes } = breakDownAllNodes(nodes);
@@ -122,9 +145,9 @@ const IndexPage = ({ data, pageContext: { langKey, defaultLang, langTextMap } })
 
   return (
     <>
-      <SEO lang={langKey} title="Top" keywords={keywords} description={description} />
+      <SEO lang={langKey} title="Yaswanth Palika" keywords={keywords} description={description} />
       <Navbar
-        anchors={anchors}
+        anchors={["Skills", "Experience","Projects", "Education"]}
         frontmatter={navBarNode.frontmatter}
         extraItems={langSelectorPart}
       />

@@ -36,25 +36,51 @@ exports.createSchemaCustomization = ({ actions }) => {
       jumpToAnchor: String
       jumpToAnchorText: String
       social: Social
-      services: [Service]
-      teamMember: [TeamMember]
+      education: [Education]
+      me: Me
+      projects: Project
+      skills: Skills
     }`,
-    `type TeamMember {
+    `type Me {
       social: Social
-    }`,
-    `type Service {
-      iconName: String
-      imageFileName: String
-      header: String
       content: String
+    }`,
+    `type Education {
+      school: String
+      degree: String
+      score: String
+      highlights: [String]
     }`,
     `
     type Social {
-      twitter: String
-      facebook: String
-      linkedin: String
-      medium: String
       github: String
+      twitter: String
+      linkedin: String
+      scholar: String
+      medium: String
+    }
+    type Project {
+      visai: [ProjectItem]
+      aandw: [ProjectItem]
+      software: [ProjectItem]
+    }
+    type ProjectItem {
+      imageFileName: String
+      imageFileNameDetail: String
+      header: String
+      subheader: String
+      content: String
+      date: String
+      links: [ProjectURL]
+    }
+    type ProjectURL {
+      name: String
+      url: String
+    }
+    type Skills {
+      languages: [String]
+      platforms: [String]
+      landf: [String]
     }
     `,
   ];

@@ -52,12 +52,21 @@ const MyNavbar = ({ anchors, frontmatter, extraItems }) => {
           <Icon iconName="BarsIcon" />
         </Navbar.Toggle>
         <Navbar.Collapse>
-          <Nav className="text-uppercase ms-auto">
+          <Nav className="text-uppercase ml-auto">
             {anchors.map((anchor) => (
               <NavItem key={anchor} to={anchor} onClick={closeMenu} />
             ))}
+            <a
+              href="/Resume.pdf"
+              className="nav-link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Resume
+            </a>
           </Nav>
-          {extraItems}
+          {/* Language Selector Part */}
+          {/* {extraItems} */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
